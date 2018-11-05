@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EAGetMail45, Version=4.6.5.1, Culture=neutral, PublicKeyToken=e10a0812eb29cf94, processorArchitecture=MSIL">
+      <HintPath>..\packages\EAGetMail.4.6.5.1\lib\net45\EAGetMail45.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -193,6 +196,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractMwsObject.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -227,18 +231,76 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Contracts\IAmazonOrders.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\YahooController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IMwsCall.cs" />
+    <Compile Include="IMwsObject.cs" />
+    <Compile Include="IMwsReader.cs" />
+    <Compile Include="IMwsRequestType.cs" />
+    <Compile Include="IMwsWriter.cs" />
+    <Compile Include="MarketplaceWebServiceOrders.cs" />
+    <Compile Include="MarketplaceWebServiceOrdersClient.cs" />
+    <Compile Include="MarketplaceWebServiceOrdersConfig.cs" />
+    <Compile Include="MarketplaceWebServiceOrdersException.cs" />
+    <Compile Include="MarketplaceWebServiceOrdersSample.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\BuyerCustomizedInfoDetail.cs" />
+    <Compile Include="Models\BuyerTaxInfo.cs" />
+    <Compile Include="Models\GetOrderRequest.cs" />
+    <Compile Include="Models\GetOrderResponse.cs" />
+    <Compile Include="Models\GetOrderResult.cs" />
+    <Compile Include="Models\GetServiceStatusRequest.cs" />
+    <Compile Include="Models\GetServiceStatusResponse.cs" />
+    <Compile Include="Models\GetServiceStatusResult.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IMWSResponse.cs" />
+    <Compile Include="Models\InvoiceData.cs" />
+    <Compile Include="Models\ListOrderItemsByNextTokenRequest.cs" />
+    <Compile Include="Models\ListOrderItemsByNextTokenResponse.cs" />
+    <Compile Include="Models\ListOrderItemsByNextTokenResult.cs" />
+    <Compile Include="Models\ListOrderItemsRequest.cs" />
+    <Compile Include="Models\ListOrderItemsResponse.cs" />
+    <Compile Include="Models\ListOrderItemsResult.cs" />
+    <Compile Include="Models\ListOrdersByNextTokenRequest.cs" />
+    <Compile Include="Models\ListOrdersByNextTokenResponse.cs" />
+    <Compile Include="Models\ListOrdersByNextTokenResult.cs" />
+    <Compile Include="Models\ListOrdersRequest.cs" />
+    <Compile Include="Models\ListOrdersResponse.cs" />
+    <Compile Include="Models\ListOrdersResult.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Money.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderItem.cs" />
+    <Compile Include="Models\PaymentExecutionDetailItem.cs" />
+    <Compile Include="Models\PointsGrantedDetail.cs" />
+    <Compile Include="Models\ProductInfoDetail.cs" />
+    <Compile Include="Models\ResponseHeaderMetadata.cs" />
+    <Compile Include="Models\ResponseMetadata.cs" />
+    <Compile Include="Models\TaxClassification.cs" />
+    <Compile Include="Models\TaxCollection.cs" />
+    <Compile Include="MwsAQCall.cs" />
+    <Compile Include="MwsConnection.cs" />
+    <Compile Include="MwsException.cs" />
+    <Compile Include="MwsResponseHeaderMetadata.cs" />
+    <Compile Include="MwsResponseMetadata.cs" />
+    <Compile Include="MwsUtil.cs" />
+    <Compile Include="MwsXmlBuilder.cs" />
+    <Compile Include="MwsXmlReader.cs" />
+    <Compile Include="MwsXmlWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Contracts\IYahooService.cs" />
+    <Compile Include="Services\AmazonOrders.cs" />
+    <Compile Include="Services\YahooService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -313,6 +375,17 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="EAGetMailObjLib">
+      <Guid>{5FA52C10-18FC-4D81-8542-50F9A2DC60A3}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

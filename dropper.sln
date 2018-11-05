@@ -5,6 +5,16 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dropper", "dropper\dropper.csproj", "{1126458A-590A-4D02-886F-7F37B992C500}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuppliersChecker", "SuppliersChecker\SuppliersChecker.csproj", "{612DDF1B-4EA2-4DD9-AA4B-193AB476ECF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketplaceWebService.Samples", "..\..\..\..\Downloads\amazon-mws-v20090101-csclient-2016-09-21._CB482805904_\src\MarketplaceWebService.Samples\MarketplaceWebService.Samples.csproj", "{A8B4C043-CA01-4437-8722-DA066F315FA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketplaceWebService", "..\..\..\..\Downloads\amazon-mws-v20090101-csclient-2016-09-21._CB482805904_\src\MarketplaceWebService\MarketplaceWebService.csproj", "{AC93A4EE-89F9-4E40-81DE-F47636311AE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShippingConfirmationApp", "ShippingConfirmationApp\ShippingConfirmationApp.csproj", "{0979C165-4331-41A9-84E9-E07062B393D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buyer", "Buyer\Buyer.csproj", "{AEDBEDCA-D0C9-4FD2-BC3E-ADB1C894A756}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +25,26 @@ Global
 		{1126458A-590A-4D02-886F-7F37B992C500}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1126458A-590A-4D02-886F-7F37B992C500}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1126458A-590A-4D02-886F-7F37B992C500}.Release|Any CPU.Build.0 = Release|Any CPU
+		{612DDF1B-4EA2-4DD9-AA4B-193AB476ECF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{612DDF1B-4EA2-4DD9-AA4B-193AB476ECF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{612DDF1B-4EA2-4DD9-AA4B-193AB476ECF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{612DDF1B-4EA2-4DD9-AA4B-193AB476ECF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8B4C043-CA01-4437-8722-DA066F315FA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8B4C043-CA01-4437-8722-DA066F315FA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8B4C043-CA01-4437-8722-DA066F315FA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8B4C043-CA01-4437-8722-DA066F315FA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC93A4EE-89F9-4E40-81DE-F47636311AE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC93A4EE-89F9-4E40-81DE-F47636311AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC93A4EE-89F9-4E40-81DE-F47636311AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC93A4EE-89F9-4E40-81DE-F47636311AE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0979C165-4331-41A9-84E9-E07062B393D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0979C165-4331-41A9-84E9-E07062B393D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0979C165-4331-41A9-84E9-E07062B393D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0979C165-4331-41A9-84E9-E07062B393D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEDBEDCA-D0C9-4FD2-BC3E-ADB1C894A756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEDBEDCA-D0C9-4FD2-BC3E-ADB1C894A756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEDBEDCA-D0C9-4FD2-BC3E-ADB1C894A756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEDBEDCA-D0C9-4FD2-BC3E-ADB1C894A756}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
