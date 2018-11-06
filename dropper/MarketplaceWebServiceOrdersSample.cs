@@ -63,8 +63,16 @@ namespace MarketplaceWebServiceOrders {
 
             try 
             {
+                var orders = client.ListOrders(new ListOrdersRequest
+                {
+                    CreatedAfter = DateTime.Now.AddDays(-2),
+                    SellerId = "A2MYXT7L2V7JQC"
+            });
+
+
+
+
                 IMWSResponse response = null;
-                 response = sample.InvokeGetOrder();
                 // response = sample.InvokeGetServiceStatus();
                 // response = sample.InvokeListOrderItems();
                 // response = sample.InvokeListOrderItemsByNextToken();

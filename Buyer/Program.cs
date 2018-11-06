@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
+using OrdersHandler;
 
 namespace Buyer
 {
@@ -12,18 +13,47 @@ namespace Buyer
     {
         public static void Main(string[] args)
         {
-            var driver = new EdgeDriver();
+            OrdersManager ordersManager = new OrdersManager();
+            var orders = ordersManager.GetPendingOrders();
+            
+            foreach (var order in orders)
+            {
+                AddToCart(order, order.SupplierUrl);
+                if (!string.IsNullOrWhiteSpace(order.SupplierUrl2))
+                {
+                    AddToCart(order, order.SupplierUrl2);
+                }
+                if (!string.IsNullOrWhiteSpace(order.SupplierUrl3))
+                {
+                    AddToCart(order, order.SupplierUrl3);
+                }
 
-            // Navigate to Bing
-            driver.Url = "https://www.amazon.com/Bestpriceam-Stylish-Colorful-Celluloid-Plectrums/dp/B014UR6K7A/ref=sr_1_3?s=musical-instruments&ie=UTF8&qid=1541357750&sr=1-3&keywords=guitar+pick&refinements=p_36%3A-150";
+                var SupplierOrderId = SubmitCart(order);
 
-            // Find the search box and query for webdriver
-            var element = driver.FindElementById("olp-upd-new");
-
-            element.Click();
-            //element.SendKeys(Keys.Enter);
-
+                ordersManager.UpdateSupplierOrderId(order.OrderId, SupplierOrderId);
+            }
+            
             Console.ReadLine();
+
+        }
+
+        private static string SubmitCart(Order order)
+        {
+            var driver = new EdgeDriver
+            {
+                Url = order.SupplierUrl
+            };
+            driver.Quit();
+
+            return "";
+        }
+
+        private static void AddToCart(Order order, string supplierUrl)
+        {
+            var driver = new EdgeDriver
+            {
+                Url = supplierUrl
+            };
             driver.Quit();
         }
     }

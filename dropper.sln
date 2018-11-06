@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShippingConfirmationApp", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buyer", "Buyer\Buyer.csproj", "{AEDBEDCA-D0C9-4FD2-BC3E-ADB1C894A756}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersHandler", "OrdersHandler\OrdersHandler.csproj", "{9F28EF06-F021-457C-A854-64CF0976F0A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{AEDBEDCA-D0C9-4FD2-BC3E-ADB1C894A756}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEDBEDCA-D0C9-4FD2-BC3E-ADB1C894A756}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEDBEDCA-D0C9-4FD2-BC3E-ADB1C894A756}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F28EF06-F021-457C-A854-64CF0976F0A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F28EF06-F021-457C-A854-64CF0976F0A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F28EF06-F021-457C-A854-64CF0976F0A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F28EF06-F021-457C-A854-64CF0976F0A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
