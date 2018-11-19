@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using EASendMail;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium;
+using AmazonHelper;
 
 namespace SupplierChecker
 {
@@ -74,30 +75,13 @@ namespace SupplierChecker
                             {
                                 if (link.StartsWith("http"))
                                 {
-                                    Match match;
-                                    Regex shipmentIdReg = new Regex(@"/B+[a-zA-Z0-9]+/ref", RegexOptions.IgnoreCase);
-                                    match = shipmentIdReg.Match(link);
-                                    if (match.Success)
+                                    string asin = Helper.GetAsinFromUrl(link);
+                                    if (string.IsNullOrWhiteSpace(asin) == false)
                                     {
-                                        string asin = match.Value.Substring(1, match.Value.Length - 5);
                                         asins.Add(asin);
                                         if (!asinNamesMapping.ContainsKey(asin))
                                         {
                                             asinNamesMapping.Add(asin, row[0].ToString());
-                                        }
-                                    }
-                                    else
-                                    {
-                                        Regex otherReg = new Regex(@"(dp/B+[a-zA-Z0-9]{9})", RegexOptions.IgnoreCase);
-                                        match = otherReg.Match(link);
-                                        if (match.Success)
-                                        {
-                                            string asin = match.Value.Substring(3, match.Value.Length - 3);
-                                            asins.Add(asin);
-                                            if (!asinNamesMapping.ContainsKey(asin))
-                                            {
-                                                asinNamesMapping.Add(asin, row[0].ToString());
-                                            }
                                         }
                                     }
                                 }
@@ -131,17 +115,17 @@ namespace SupplierChecker
                 foreach (string asin in asins)
                 {
                     counter++;
-                    string url = $"https://www.amazon.com/gp/offer-listing/{asin}/ref=dp_olp_all_mbc?ie=UTF8&amp;condition=all";
+                    string url = Helper.GetSellersUrlFromAsin(asin);
                     bool isAmazonSelling = true;
                     try
                     {
-                        isAmazonSelling = IsAmazonASeller(url);
+                        isAmazonSelling = Helper.IsAmazonASeller(url);
                     }
                     catch(Exception ex)
                     {
                         try
                         {
-                            isAmazonSelling = IsAmazonASeller(url);
+                            isAmazonSelling = Helper.IsAmazonASeller(url);
                         }
                         catch (Exception ex2)
                         {
@@ -223,54 +207,6 @@ namespace SupplierChecker
             //{
             //    Console.WriteLine("failed to send email with the following error:");
             //    Console.WriteLine(ep.Message);
-            //}
-        }
-
-        private static bool IsAmazonASeller(string url)
-        {
-            var driver = new EdgeDriver
-            {
-                Url = url
-            };
-            bool ans = false;
-            try
-            {
-                if (driver.FindElementByXPath("//img[@alt='Amazon.com']").Displayed)
-                    ans = true;
-            }
-            catch (NoSuchElementException)
-            {
-                    ans = false;              
-            }
-
-            driver.Quit();
-
-            return ans;
-
-            //string html = string.Empty;
-            //HttpWebRequest supRequest = (HttpWebRequest)WebRequest.Create(url);
-            //using (HttpWebResponse supResponse = (HttpWebResponse)supRequest.GetResponse())
-            //using (Stream stream = supResponse.GetResponseStream())
-            //using (StreamReader reader = new StreamReader(stream))
-            //{
-            //    html = reader.ReadToEnd();
-            //    if (html.Contains("<img alt=\"Amazon.com\""))
-            //        return true;
-            //    else
-            //    {
-            //        Match match;
-            //        Regex shipmentIdReg = new Regex(@"/gp/offer-listing/(?<asin>\w*)/ref=olp_page_next/(?<num>.+)?ie=UTF8&f_all=true&startIndex=10", RegexOptions.IgnoreCase);
-            //        match = shipmentIdReg.Match(html);
-            //        if (match.Success)
-            //        {
-            //            IsAmazonASeller($"https://www.amazon.com/gp/offer-listing/{match.Groups[1]}/ref=olp_page_next/{match.Groups[2]}ie=UTF8&f_all=true&startIndex=10");
-            //        }
-            //        else
-            //        {
-            //            return false;
-            //        }
-            //    }
-            //    return false;
             //}
         }
     }

@@ -11,26 +11,35 @@ namespace OrdersHandler
 {
     using System;
     using System.Collections.Generic;
+    using Newtonsoft;
     
     public partial class Order
     {
-        public string OrderId { get; set; }
-        public int Status { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Address1 { get; set; }
-        public string Address2 { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Zipcode { get; set; }
-        public string PhoneNumber { get; set; }
+        public string OrderId { get; set; } = "";
+        public int Status { get; set; } = 0;
+        public string FirstName { get; set; } = "";
+        public string LastName { get; set; } = "";
+        public string Address1 { get; set; } = "";
+        public string Address2 { get; set; } = "";
+        public string City { get; set; } = "";
+        public string State { get; set; } = "";
+        public string Zipcode { get; set; } = "";
+        public string PhoneNumber { get; set; } = "";
         public Nullable<System.DateTime> OrderDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
-        public string SupplierUrl { get; set; }
-        public string SupplierUrl2 { get; set; }
-        public string SupplierUrl3 { get; set; }
-        public string SupplierOrderID { get; set; }
-        public string SKU { get; set; }
-        public string Asin { get; set; }
+        public string SupplierUrl { get; set; } = "";
+        public string SupplierUrl2 { get; set; } = "";
+        public string SupplierUrl3 { get; set; } = "";
+        public string SupplierOrderID { get; set; } = "";
+        public string SKU { get; set; } = "";
+        public string Asin { get; set; } = "";
+        public int Quantity { get; set; } = 1;
+
+
+        public override string ToString()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this).ToString();
+        }
     }
+
 }
